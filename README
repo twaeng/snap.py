@@ -1,0 +1,45 @@
+snap.py - LVM based backup tool
+Syntax: snap.py command [options] <name>
+
+Valid commands are:
+  snapshot                         Create snaphshot.
+  list                             List snaphosts.
+  send                             Send TARed snapshots
+
+Use 'snap.py command -h' for information on the individual commands.
+
+$ ./snap.py snapshot -h
+Usage: snap.py [options] snapshot
+
+Options:
+  -h, --help            show this help message and exit
+  -b DIR, --broot=DIR   Backup root path [default: /backup]
+  -c none|all|VG/LV[,VG/LV]
+                        Compress snapshots (Disables the use of hard links.).
+                        [default: none]
+  -l VG/LV, --lv=VG/LV  Comma seperated list of LVs.
+  -s SIZE, --size=SIZE  lvm snapshot size in GByte [default: 2]
+  -r, --readlock        "FLUSH TABLES AND READ LOCK" local mysql server before
+                        snapshoting [default: False]
+  -v, --verbose         make noise [default: False]
+
+$ ./snap.py list -h
+Usage: snap.py [options] list
+
+Options:
+  -h, --help            show this help message and exit
+  -b DIR, --broot=DIR   Backup root path [default: /backup]
+  -l VG/LV, --lv=VG/LV  Comma seperated list of LVs.
+  -v, --verbose         make noise [default: False]
+
+$ ./snap.py send -h
+Usage: snap.py [options] send
+
+Options:
+  -h, --help            show this help message and exit
+  --host=HOST           Hostname of remote ftp server.
+  -p DIR, --path=DIR    Backup root on remote ftp server [default: /]
+  -c, --compress        Compress backups. [default: False]
+  -l VG/LV, --lv=VG/LV  Backup LV [default: raid/backup]
+  -v, --verbose         make noise [default: False]
+

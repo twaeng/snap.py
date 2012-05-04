@@ -533,7 +533,7 @@ def usage():
     print "  list                             List snaphosts."
     print "  send                             Send TARed snapshots"
     print
-    print "Use \'snap.py command -h\' for information on the individual commands." 
+    print "Use \'snap.py command -h\' for information on individual commands." 
     sys.exit(0)
 
 if __name__ == "__main__":
